@@ -19,3 +19,8 @@ frontend/dist/
 
 # macOS
 .DS_Store
+
+# local reference files (keep locally, do not commit)
+COMP7270-COMP7980-2026-Group Project Guidelines.pdf
+view-source_https___support.faceit.com_hc_en-us.html
+login_token1.rtf

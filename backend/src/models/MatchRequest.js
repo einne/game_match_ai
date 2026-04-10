@@ -1,26 +1,12 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema(
+const matchRequestSchema = new mongoose.Schema(
   {
-    username: {
+    recruitmentTitle: {
       type: String,
       required: true,
       trim: true,
-      minlength: 2,
-      maxlength: 30
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-      match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email address.']
-    },
-    passwordHash: {
-      type: String,
-      required: true,
-      minlength: 6
+      maxlength: 60
     },
     game: {
       type: String,
@@ -28,29 +14,23 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: 30
     },
-    rank: {
+    requiredRank: {
       type: String,
       required: true,
       trim: true,
       maxlength: 20
     },
-    preferredRole: {
+    requiredRole: {
       type: String,
       required: true,
       trim: true,
       maxlength: 20
     },
-    serverRegion: {
+    region: {
       type: String,
       required: true,
       trim: true,
       maxlength: 30
-    },
-    language: {
-      type: String,
-      required: true,
-      trim: true,
-      maxlength: 20
     },
     playTime: {
       type: String,
@@ -58,14 +38,24 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: 40
     },
-    bio: {
+    description: {
       type: String,
+      required: true,
       trim: true,
-      maxlength: 50,
-      default: ''
+      maxlength: 300
+    },
+    status: {
+      type: String,
+      enum: ['open', 'closed'],
+      default: 'open'
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
     }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('MatchRequest', matchRequestSchema);

@@ -1,9 +1,21 @@
 const express = require('express');
-const { getMatchSuggestions } = require('../controllers/matchController');
+const {
+  createMatchRequest,
+  getAllMatchRequests,
+  getMyMatchRequests,
+  getMatchRequestById,
+  updateMatchRequest,
+  deleteMatchRequest
+} = require('../controllers/matchController');
 const { protect } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.get('/suggestions', protect, getMatchSuggestions);
+router.post('/', protect, createMatchRequest);
+router.get('/', getAllMatchRequests);
+router.get('/mine', protect, getMyMatchRequests);
+router.get('/:id', getMatchRequestById);
+router.put('/:id', protect, updateMatchRequest);
+router.delete('/:id', protect, deleteMatchRequest);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-# GameMatch AI (Student Full-Stack Skeleton)
+# GameMatch AI 
 
 GameMatch AI is a beginner-friendly full-stack project for finding suitable gaming teammates.
 
